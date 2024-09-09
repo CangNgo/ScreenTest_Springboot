@@ -23,6 +23,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RestController
 @RequestMapping("/teacher")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class TeacherController {
     TeacherService teacherService;
 

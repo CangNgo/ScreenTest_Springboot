@@ -24,8 +24,8 @@ public class SecurityConfig {
     String adminRole = "SCOPE_ADMIN";
     String userRole = "ROLE_USER";
     private final String[] PUBLIC_ENPOINTS = {"/auth", "/auth/log-in",
-            "/auth/token", "/auth/introspect"};
-    private final String[] ADMIN_PRIVATE_ENPOINTS = {"/teacher/**", "/contract/**", "/degree/**", "/account"
+            "/auth/token", "/auth/introspect", "/account"};
+    private final String[] ADMIN_PRIVATE_ENPOINTS = {"/teacher/**", "/contract/**", "/degree/**"
                                                };@Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSercurity) throws Exception {
         httpSercurity.authorizeHttpRequests(requests ->

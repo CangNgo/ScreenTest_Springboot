@@ -19,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequestMapping("/degree")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class DegreeController {
     private DegreeService degreeService;
 

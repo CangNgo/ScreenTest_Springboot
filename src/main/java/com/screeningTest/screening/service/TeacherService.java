@@ -72,15 +72,15 @@ public class TeacherService {
     }
 
     public TeacherResponse updateTeache(String codeTeacher, TeacherUpdationRequest request) {
-        if (teacherRepository.existsByCodeTeacher(codeTeacher))
-            throw new AppException(ErrorCode.TEACHER_EXISTED);
-
+        if (!teacherRepository.existsByCodeTeacher(codeTeacher))
+            throw new AppException(ErrorCode.TEACHER_NOT_FOUND);
+        Teacher teacher  = teacherRepository.findByCodeTeacher(codeTeacher);
         Contract contract = contractRepository.findById(request.getContractId().getId())
                 .orElseThrow(() -> new AppException(ErrorCode.DEGREE_NOT_FOUND));
         Degree degree = degreeRepository.findById(request.getDegreeId().getId())
                 .orElseThrow(() -> new AppException(ErrorCode.DEGREE_NOT_FOUND));
 
-        Teacher teacher =teacherMapper.toTeacher(request);
+        teacher =teacherMapper.toTeacher(request);
         teacher.setCodeTeacher(codeTeacher);
         teacher.setContractId(contract);
         teacher.setDegreeId(degree);

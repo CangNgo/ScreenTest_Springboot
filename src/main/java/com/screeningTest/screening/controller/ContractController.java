@@ -18,6 +18,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RestController
 @RequestMapping("/contract")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class ContractController {
     ContractService contractService;
     IContractMapper contractMapper;

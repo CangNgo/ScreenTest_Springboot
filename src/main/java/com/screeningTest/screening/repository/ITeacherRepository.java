@@ -11,7 +11,8 @@ import java.util.List;
 @RestController
 public interface ITeacherRepository extends JpaRepository<Teacher, Long> {
     boolean existsByCodeTeacher(String codeTeacher);
-
+    @Query("select t from Teacher  t where t.codeTeacher =:codeTeacher")
+    Teacher findByCodeTeacher(String codeTeacher);
     @Query("select t from Teacher  t where t.degreeId.id = :degreeid")
     List<Teacher> findTeacherByDegreeId(Long degreeid);
 }
